@@ -11,10 +11,18 @@ namespace RPSLS
 
         //member variables
         public int numberOfWins = 0;
+        public string name;
+        public int currentSelection;
+        public bool isHuman;
 
         //constructor
+        public Player()
+        {
+
+        }
 
         //member methods
+        public abstract void GetVariableSelection();
 
     }
 }

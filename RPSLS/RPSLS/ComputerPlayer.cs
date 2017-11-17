@@ -12,8 +12,18 @@ namespace RPSLS
         //member variables
 
         //constructor
+        public ComputerPlayer()
+        {
+            this.isHuman = false;
+            this.name = "Computer";
+        }
 
         //member methods
+        public override void GetVariableSelection()
+        {
+            currentSelection = UI.randomNumber.Next(5);
+        }
+
 
     }
 }
