@@ -22,7 +22,7 @@ namespace RPSLS
         }
 
         //member methods
-        public abstract void GetVariableSelection();
+        public abstract void SetVariableSelection();
 
     }
 }

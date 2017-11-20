@@ -89,8 +89,8 @@ namespace RPSLS
 
         private void PlayRound()
         {
-            player1.GetVariableSelection();
-            player2.GetVariableSelection();
+            player1.SetVariableSelection();
+            player2.SetVariableSelection();
             UI.DisplayPlayerSelection(player1);
             UI.DisplayPlayerSelection(player2);
             setNumberOfWins(player1, player2);
@@ -140,6 +140,10 @@ namespace RPSLS
             if ( doPlayAgain )
             {
                 StartGame();
+            }
+            else
+            {
+                return;
             }
         }
     }

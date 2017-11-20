@@ -20,7 +20,7 @@ namespace RPSLS
         }
 
         //member methods
-        public override void GetVariableSelection()
+        public override void SetVariableSelection()
         {
             currentSelection = randomNumber.Next(5);
         }

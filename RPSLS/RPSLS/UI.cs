@@ -66,6 +66,7 @@ namespace RPSLS
             Console.Write(" for ");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("2-Player Mode");
+            Console.ResetColor();
         }
 
         public static int GetGameModeOption()
@@ -178,8 +179,8 @@ namespace RPSLS
 
         private static void DisplayPlayAgainOption()
         {
-            Console.WriteLine("Would you like to play again?");
-            Console.Write("\nPress ");
+            Console.WriteLine("\nWould you like to play again?");
+            Console.Write("Press ");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("'y'");
             Console.ResetColor();

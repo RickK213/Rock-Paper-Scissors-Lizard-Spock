@@ -25,15 +25,25 @@ namespace RPSLS
             Console.WriteLine(name + ": please make your selection:");
         }
 
-        public override void GetVariableSelection()
+        public override void SetVariableSelection()
         {
             DisplayPlayerInterface();
             UI.DisplayPlayerMenu();
             string userSelection = Console.ReadKey(true).KeyChar.ToString();
-            currentSelection = int.Parse(userSelection);
-            if (!(currentSelection >= 0 || currentSelection <= 4))
+            int number;
+            if( !int.TryParse(userSelection, out number) )
             {
-                GetVariableSelection();
+                Console.Clear();
+                SetVariableSelection();
+            }
+            else if ( !(int.Parse(userSelection) >= 0) || !(int.Parse(userSelection) <= 4) )
+            {
+                Console.Clear();
+                SetVariableSelection();
+            }
+            else
+            {
+                currentSelection = int.Parse(userSelection);
             }
         }
 
