@@ -15,6 +15,71 @@ namespace RPSLS
         private Player player2;
         private int numberOfWinsToWinGame = 2;
 
+        private void DoGameOver()
+        {
+            string gameWinnerName = GetGameWinnerName();
+            UI.DisplayWinner(gameWinnerName);
+            bool doPlayAgain = UI.getPlayAgainOption();
+            if (doPlayAgain)
+            {
+                StartGame();
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private string GetGameWinnerName()
+        {
+            if (player1.numberOfWins == numberOfWinsToWinGame)
+            {
+                return player1.name;
+            }
+            else
+            {
+                return player2.name;
+            }
+        }
+
+        private bool GetIsGameOver()
+        {
+            if ((player1.numberOfWins == numberOfWinsToWinGame || player2.numberOfWins == numberOfWinsToWinGame))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void PlayRounds()
+        {
+            Console.Clear();
+            SetUpGame();
+            while (!isGameOver)
+            {
+                PlaySingleRound();
+                isGameOver = GetIsGameOver();
+                if (!isGameOver)
+                {
+                    UI.GetAnyKeyToContinue();
+                }
+            }
+            DoGameOver();
+        }
+
+        private void PlaySingleRound()
+        {
+            player1.SetVariableSelection();
+            player2.SetVariableSelection();
+            player1.DisplayVariableSelection();
+            player2.DisplayVariableSelection();
+            SetNumberOfWins(player1, player2);
+            UI.DisplayNumberOfWins(player1, player2);
+        }
+
         private void SetGameMode(int gameMode)
         {
             if (gameMode == 2)
@@ -24,34 +89,6 @@ namespace RPSLS
             else
             {
                 isTwoPlayerMode = false;
-            }
-        }
-
-        public void StartGame()
-        {
-            UI.DisplayInstructions();
-            int gameMode = UI.GetGameModeOption();
-            SetGameMode(gameMode);
-            PlayRounds();
-        }
-
-        private void SetUpGame()
-        {
-            isGameOver = false;
-
-            player1 = new HumanPlayer();
-            player1.numberOfWins = 0;
-
-            if ( isTwoPlayerMode )
-            {
-                player2 = new HumanPlayer();
-                player2.name = "Player 2";
-                player2.numberOfWins = 0;
-            }
-            else
-            {
-                player2 = new ComputerPlayer();
-                player2.numberOfWins = 0;
             }
         }
 
@@ -75,69 +112,33 @@ namespace RPSLS
             }
         }
 
-        private void PlayRound()
+        private void SetUpGame()
         {
-            player1.SetVariableSelection();
-            player2.SetVariableSelection();
-            player1.DisplayVariableSelection();
-            player2.DisplayVariableSelection();
-            SetNumberOfWins(player1, player2);
-            UI.DisplayNumberOfWins(player1, player2);
-        }
+            isGameOver = false;
 
-        private bool GetIsGameOver()
-        {
-            if ( (player1.numberOfWins == numberOfWinsToWinGame || player2.numberOfWins == numberOfWinsToWinGame) )
+            player1 = new HumanPlayer();
+            player1.numberOfWins = 0;
+
+            if ( isTwoPlayerMode )
             {
-                return true;
+                player2 = new HumanPlayer();
+                player2.name = "Player 2";
+                player2.numberOfWins = 0;
             }
             else
             {
-                return false;
+                player2 = new ComputerPlayer();
+                player2.numberOfWins = 0;
             }
         }
 
-        private string GetGameWinnerName()
+        public void StartGame()
         {
-            if ( player1.numberOfWins == numberOfWinsToWinGame)
-            {
-                return player1.name;
-            }
-            else
-            {
-                return player2.name;
-            }
+            UI.DisplayInstructions();
+            int gameMode = UI.GetGameModeOption();
+            SetGameMode(gameMode);
+            PlayRounds();
         }
 
-        private void DoGameOver()
-        {
-            string gameWinnerName = GetGameWinnerName();
-            UI.DisplayWinner(gameWinnerName);
-            bool doPlayAgain = UI.getPlayAgainOption();
-            if (doPlayAgain)
-            {
-                StartGame();
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        private void PlayRounds()
-        {
-            Console.Clear();
-            SetUpGame();
-            while ( !isGameOver )
-            {
-                PlayRound();
-                isGameOver = GetIsGameOver();
-                if(!isGameOver)
-                {
-                    UI.GetAnyKeyToContinue();
-                }
-            }
-            DoGameOver();
-        }
     }
 }

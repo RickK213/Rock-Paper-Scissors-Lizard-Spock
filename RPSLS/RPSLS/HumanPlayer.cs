@@ -9,16 +9,11 @@ namespace RPSLS
     public class HumanPlayer : Player
     {
 
-        //member variables
-
-
-        //constructor
         public HumanPlayer()
         {
             this.name = "Player 1";
         }
 
-        //member methods
         private void DisplayPlayerInterface()
         {
             Console.WriteLine(name + ": please make your selection:");
