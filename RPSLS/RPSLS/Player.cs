@@ -10,10 +10,9 @@ namespace RPSLS
     {
 
         //member variables
-        public int numberOfWins = 0;
+        public int numberOfWins;
         public string name;
         public int currentSelection;
-        public bool isHuman;
 
         //constructor
         public Player()

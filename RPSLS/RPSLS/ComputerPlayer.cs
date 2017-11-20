@@ -15,7 +15,6 @@ namespace RPSLS
         //constructor
         public ComputerPlayer()
         {
-            this.isHuman = false;
             this.name = "Computer";
         }
 

@@ -15,7 +15,6 @@ namespace RPSLS
         //constructor
         public HumanPlayer()
         {
-            this.isHuman = true;
             this.name = "Player 1";
         }
 
@@ -31,12 +30,7 @@ namespace RPSLS
             UI.DisplayPlayerMenu();
             string userSelection = Console.ReadKey(true).KeyChar.ToString();
             int number;
-            if( !int.TryParse(userSelection, out number) )
-            {
-                Console.Clear();
-                SetVariableSelection();
-            }
-            else if ( !(int.Parse(userSelection) >= 0) || !(int.Parse(userSelection) <= 4) )
+            if( !int.TryParse(userSelection, out number) || !(int.Parse(userSelection) >= 0) || !(int.Parse(userSelection) <= 4) )
             {
                 Console.Clear();
                 SetVariableSelection();

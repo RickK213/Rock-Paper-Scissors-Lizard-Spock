@@ -34,6 +34,10 @@ namespace RPSLS
             {
                 isTwoPlayerMode = true;
             }
+            else
+            {
+                isTwoPlayerMode = false;
+            }
         }
 
         public void StartGame()

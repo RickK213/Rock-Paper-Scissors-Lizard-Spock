@@ -180,14 +180,15 @@ namespace RPSLS
         private static void DisplayPlayAgainOption()
         {
             Console.WriteLine("\nWould you like to play again?");
-            Console.Write("Press ");
+            Console.Write("Press '");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("'y'");
+            Console.Write("y");
             Console.ResetColor();
-            Console.Write(" or ");
+            Console.Write("' or '");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("'n'");
+            Console.Write("n");
             Console.ResetColor();
+            Console.WriteLine("'");
         }
 
         private static string GetUserSelectionKey()
