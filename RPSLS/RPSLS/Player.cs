@@ -13,11 +13,12 @@ namespace RPSLS
         public string name;
         public int currentSelection;
 
-        public abstract void SetVariableSelection();
-
         public void DisplayVariableSelection()
         {
             Console.WriteLine("{0} selected {1}", name, UI.gameVariables[currentSelection]);
         }
+
+        public abstract void SetVariableSelection();
+
     }
 }
