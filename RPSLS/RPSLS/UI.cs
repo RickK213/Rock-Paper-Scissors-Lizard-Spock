@@ -42,11 +42,11 @@ namespace RPSLS
             Console.ResetColor();
             Console.WriteLine("This game is an expansion on the game Rock, Paper, Scissors.\n\nDuring each round, each player picks a variable by pressing keys 0-4:");
             DisplayPlayerMenu();
-            Console.WriteLine("\nThe winner of each round is the player who defeats the other.\nIn a tie, the process is repeated until a round winner is found.\nThe first player to achieve best of three wins the game.\n");
+            Console.WriteLine("The winner of each round is the player who defeats the other.\nIn a tie, the process is repeated until a round winner is found.\nThe first player to achieve best of three wins the game.\n");
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("DURING EACH ROUND:");
             Console.ResetColor();
-            Console.WriteLine("Scissors cuts Paper\nPaper covers Rock\nRock crushes Lizard\nLizard poisons Spock\nSpock smashes Scissors\nScissors decapitates Lizard\nLizard eats Paper\nPaper disproves Spock\nSpock vaporizes Rock\nRock crushes Scissors");
+            Console.WriteLine("Scissors cuts Paper\nPaper covers Rock\nRock crushes Lizard\nLizard poisons Spock\nSpock smashes Scissors\nScissors decapitates Lizard\nLizard eats Paper\nPaper disproves Spock\nSpock vaporizes Rock\nRock blunts Scissors");
         }
 
         public static void DisplayGameModeOptions()
@@ -96,7 +96,7 @@ namespace RPSLS
 
         public static string GetDefeatWord(string winnerWord, string loserWord)
         {
-            string defeatWord = " defeats ";
+            string defeatWord = "defeats";
             if ((winnerWord == "Scissors") && (loserWord == "Paper"))
             {
                 defeatWord = "cuts";
@@ -158,10 +158,23 @@ namespace RPSLS
             Console.ResetColor();
         }
 
+        public static string GetWinsWord(Player player)
+        {
+            if ( player.numberOfWins == 1 )
+            {
+                return "win";
+            }
+            else
+            {
+                return "wins";
+            }
+        }
         public static void DisplayNumberOfWins(Player player1, Player player2)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("\n{0} has {1} wins. {2} has {3} wins.", player1.name, player1.numberOfWins, player2.name, player2.numberOfWins);
+            string player1WinsWord = GetWinsWord(player1);
+            string player2WinsWord = GetWinsWord(player2);
+            Console.WriteLine("\n{0} has {1} {2}. {3} has {4} {5}.", player1.name, player1.numberOfWins, player1WinsWord, player2.name, player2.numberOfWins, player2WinsWord);
             Console.ResetColor();
         }
 
@@ -175,13 +188,13 @@ namespace RPSLS
         public static void DisplayWinner(string gameWinnerName)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\n{0} WINS THE GAME!", gameWinnerName);
+            Console.WriteLine("\n{0} WINS THE GAME!/n", gameWinnerName);
             Console.ResetColor();
         }
 
         private static void DisplayPlayAgainOption()
         {
-            Console.WriteLine("\nWould you like to play again?");
+            Console.WriteLine("Would you like to play again?");
             Console.Write("Press '");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("y");
