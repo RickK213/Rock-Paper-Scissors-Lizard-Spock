@@ -22,7 +22,6 @@ namespace RPSLS
         public Player player1;
         public Player player2;
         public int numberOfWinsToWinGame = 2;
-        public int d;
 
         //constructor
 
@@ -70,24 +69,21 @@ namespace RPSLS
 
         private void setNumberOfWins(Player player1, Player player2)
         {
-            d = (5 + player1.currentSelection - player2.currentSelection) % 5;
-            if (d == 0)
+            int numberOfVariables = UI.gameVariables.Count();
+            int roundWinDeterminer = (numberOfVariables + player1.currentSelection - player2.currentSelection) % numberOfVariables;
+            if (roundWinDeterminer == 0)
             {
                 UI.DisplayRoundOutcome(player1, player2, true);
             }
-            else if (d == 1 || d == 3)
+            else if (roundWinDeterminer % 2 == 1)
             {
                 UI.DisplayRoundOutcome(player1, player2, false);
                 player1.numberOfWins++;
             }
-            else if (d == 2 || d == 4)
+            else
             {
                 UI.DisplayRoundOutcome(player2, player1, false);
                 player2.numberOfWins++;
-            }
-            else
-            {
-                Console.WriteLine("Game error.");
             }
         }
 

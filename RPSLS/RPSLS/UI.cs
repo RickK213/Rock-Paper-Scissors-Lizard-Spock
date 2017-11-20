@@ -160,7 +160,9 @@ namespace RPSLS
 
         public static void DisplayNumberOfWins(Player player1, Player player2)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("\n{0} has {1} wins. {2} has {3} wins.", player1.name, player1.numberOfWins, player2.name, player2.numberOfWins);
+            Console.ResetColor();
         }
 
         public static void GetAnyKeyToContinue()
