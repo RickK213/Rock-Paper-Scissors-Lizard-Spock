@@ -10,6 +10,7 @@ namespace RPSLS
     {
 
         //member variables
+        public Random randomNumber = new Random();
 
         //constructor
         public ComputerPlayer()
@@ -21,7 +22,7 @@ namespace RPSLS
         //member methods
         public override void GetVariableSelection()
         {
-            currentSelection = UI.randomNumber.Next(5);
+            currentSelection = randomNumber.Next(5);
         }
 
 

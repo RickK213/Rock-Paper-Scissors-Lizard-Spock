@@ -22,7 +22,7 @@ namespace RPSLS
         //member methods
         private void DisplayPlayerInterface()
         {
-
+            Console.WriteLine(name + ": please make your selection:");
         }
 
         public override void GetVariableSelection()

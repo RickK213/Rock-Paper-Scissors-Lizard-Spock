@@ -9,8 +9,7 @@ namespace RPSLS
     public static class UI
     {
         //member variables
-        public static Random randomNumber = new Random();
-        public static List<string> gameVariables = new List<string>() { "Rock", "Paper", "Scissors", "Lizard", "Spock" };
+        public static List<string> gameVariables = new List<string>() { "Rock", "Paper", "Scissors", "Spock", "Lizard" };
 
         //member methods
         public static void DisplayPlayerMenu()
@@ -35,14 +34,15 @@ namespace RPSLS
 
         public static void DisplayInstructions()
         {
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("WELCOME TO ROCK, PAPER, SCISSORS, LIZARD, SPOCK\n");
+            Console.WriteLine("WELCOME TO ROCK, PAPER, SCISSORS, SPOCK, LIZARD\n");
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("RULES:");
             Console.ResetColor();
             Console.WriteLine("This game is an expansion on the game Rock, Paper, Scissors.\n\nDuring each round, each player picks a variable by pressing keys 0-4:");
             DisplayPlayerMenu();
-            Console.WriteLine("\n\nThe winner of each round is the player who defeats the other.\nIn a tie, the process is repeated until a round winner is found.\nThe first player to achieve best of three wins the game.\n");
+            Console.WriteLine("\nThe winner of each round is the player who defeats the other.\nIn a tie, the process is repeated until a round winner is found.\nThe first player to achieve best of three wins the game.\n");
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("DURING EACH ROUND:");
             Console.ResetColor();
@@ -70,10 +70,12 @@ namespace RPSLS
 
         public static int GetGameModeOption()
         {
-            string userSelection = Console.ReadKey(true).KeyChar.ToString();
+            DisplayGameModeOptions();
+            string userSelection = GetUserSelectionKey();
             if (!(userSelection == "1" || userSelection == "2"))
             {
-                GetGameModeOption();
+                Console.Clear();
+                return GetGameModeOption();
             }
             return int.Parse(userSelection);
         }
@@ -84,9 +86,132 @@ namespace RPSLS
             Console.WriteLine("{0}: Select your variable:", player.name);
         }
 
-        public static void DisplayRoundResults(Player player)
+        public static void DisplayPlayerSelection(Player player)
         {
             Console.WriteLine("{0} selected {1}", player.name, UI.gameVariables[player.currentSelection]);
+        }
+
+        //(and as it always has) Rock crushes Scissors
+
+        public static string GetDefeatWord(string winnerWord, string loserWord)
+        {
+            string defeatWord = " defeats ";
+            if ((winnerWord == "Scissors") && (loserWord == "Paper"))
+            {
+                defeatWord = "cuts";
+            }
+            else if ((winnerWord == "Paper") && (loserWord == "Rock"))
+            {
+                defeatWord = "covers";
+            }
+            else if ((winnerWord == "Rock") && (loserWord == "Lizard"))
+            {
+                defeatWord = "crushes";
+            }
+            else if ((winnerWord == "Lizard") && (loserWord == "Spock"))
+            {
+                defeatWord = "poisons";
+            }
+            else if ((winnerWord == "Spock") && (loserWord == "Scissors"))
+            {
+                defeatWord = "smashes";
+            }
+            else if ((winnerWord == "Scissors") && (loserWord == "Lizard"))
+            {
+                defeatWord = "decapitates";
+            }
+            else if ((winnerWord == "Lizard") && (loserWord == "Paper"))
+            {
+                defeatWord = "eats";
+            }
+            else if ((winnerWord == "Paper") && (loserWord == "Spock"))
+            {
+                defeatWord = "disproves";
+            }
+            else if ((winnerWord == "Spock") && (loserWord == "Rock"))
+            {
+                defeatWord = "vaporizes";
+            }
+            else if ((winnerWord == "Rock") && (loserWord == "Scissors"))
+            {
+                defeatWord = "blunts";
+            }
+
+            return defeatWord;
+        }
+
+        public static void DisplayRoundOutcome(Player winner, Player loser, bool isTie)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("");
+            if ( isTie )
+            {
+                Console.WriteLine("{0} and {1} Tie The Round.",winner.name, loser.name);
+            }
+            else
+            {
+                string defeatWord = UI.GetDefeatWord(gameVariables[winner.currentSelection], gameVariables[loser.currentSelection]);
+                Console.WriteLine("{0} {1} {2}", gameVariables[winner.currentSelection], defeatWord, gameVariables[loser.currentSelection]);
+                Console.WriteLine("{0} Wins The Round!", winner.name);
+            }
+            Console.ResetColor();
+        }
+
+        public static void DisplayNumberOfWins(Player player1, Player player2)
+        {
+            Console.WriteLine("\n{0} has {1} wins. {2} has {3} wins.", player1.name, player1.numberOfWins, player2.name, player2.numberOfWins);
+        }
+
+        public static void GetAnyKeyToContinue()
+        {
+            Console.WriteLine("\nPress any key to continue.");
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+        public static void DisplayWinner(string gameWinnerName)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n{0} WINS THE GAME!", gameWinnerName);
+            Console.ResetColor();
+        }
+
+        private static void DisplayPlayAgainOption()
+        {
+            Console.WriteLine("Would you like to play again?");
+            Console.Write("\nPress ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("'y'");
+            Console.ResetColor();
+            Console.Write(" or ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("'n'");
+            Console.ResetColor();
+        }
+
+        private static string GetUserSelectionKey()
+        {
+            string userSelection = Console.ReadKey(true).KeyChar.ToString();
+            return userSelection;
+        }
+
+        public static bool getPlayAgainOption()
+        {
+            DisplayPlayAgainOption();
+            string playAgainOption = GetUserSelectionKey();
+            if (!(playAgainOption == "y" || playAgainOption == "n"))
+            {
+                Console.Clear();
+                getPlayAgainOption();
+            }
+            if ( playAgainOption  == "y" )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }
