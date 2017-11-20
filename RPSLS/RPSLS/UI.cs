@@ -188,7 +188,7 @@ namespace RPSLS
         public static void DisplayWinner(string gameWinnerName)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\n{0} WINS THE GAME!/n", gameWinnerName);
+            Console.WriteLine("\n{0} WINS THE GAME!\n", gameWinnerName);
             Console.ResetColor();
         }
 

@@ -9,13 +9,6 @@ namespace RPSLS
     public class Game
     {
 
-        //Task:
-        //Rock Paper Scissors Lizard Spock
-        //Write a program that provides the game play of RPSLS
-        //The game must include options to play against a human or an AI(both options must be present)
-        //The game must be best of three
-        //Use best practices
-
         //member variables
         public bool isGameOver;
         public bool isTwoPlayerMode;
@@ -67,7 +60,7 @@ namespace RPSLS
             }
         }
 
-        private void setNumberOfWins(Player player1, Player player2)
+        private void SetNumberOfWins(Player player1, Player player2)
         {
             int numberOfVariables = UI.gameVariables.Count();
             int roundWinDeterminer = (numberOfVariables + player1.currentSelection - player2.currentSelection) % numberOfVariables;
@@ -93,7 +86,7 @@ namespace RPSLS
             player2.SetVariableSelection();
             UI.DisplayPlayerSelection(player1);
             UI.DisplayPlayerSelection(player2);
-            setNumberOfWins(player1, player2);
+            SetNumberOfWins(player1, player2);
             UI.DisplayNumberOfWins(player1, player2);
         }
 
