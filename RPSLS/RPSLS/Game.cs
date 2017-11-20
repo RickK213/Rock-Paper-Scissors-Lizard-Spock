@@ -9,17 +9,12 @@ namespace RPSLS
     public class Game
     {
 
-        //member variables
-        public bool isGameOver;
-        public bool isTwoPlayerMode;
-        public Player player1;
-        public Player player2;
-        public int numberOfWinsToWinGame = 2;
+        private bool isGameOver;
+        private bool isTwoPlayerMode;
+        private Player player1;
+        private Player player2;
+        private int numberOfWinsToWinGame = 2;
 
-        //constructor
-
-
-        //member methods
         private void SetGameMode(int gameMode)
         {
             if (gameMode == 2)
@@ -84,8 +79,8 @@ namespace RPSLS
         {
             player1.SetVariableSelection();
             player2.SetVariableSelection();
-            UI.DisplayPlayerSelection(player1);
-            UI.DisplayPlayerSelection(player2);
+            player1.DisplayVariableSelection();
+            player2.DisplayVariableSelection();
             SetNumberOfWins(player1, player2);
             UI.DisplayNumberOfWins(player1, player2);
         }
@@ -114,6 +109,21 @@ namespace RPSLS
             }
         }
 
+        private void DoGameOver()
+        {
+            string gameWinnerName = GetGameWinnerName();
+            UI.DisplayWinner(gameWinnerName);
+            bool doPlayAgain = UI.getPlayAgainOption();
+            if (doPlayAgain)
+            {
+                StartGame();
+            }
+            else
+            {
+                return;
+            }
+        }
+
         private void PlayRounds()
         {
             Console.Clear();
@@ -127,17 +137,7 @@ namespace RPSLS
                     UI.GetAnyKeyToContinue();
                 }
             }
-            string gameWinnerName = GetGameWinnerName();
-            UI.DisplayWinner(gameWinnerName);
-            bool doPlayAgain = UI.getPlayAgainOption();
-            if ( doPlayAgain )
-            {
-                StartGame();
-            }
-            else
-            {
-                return;
-            }
+            DoGameOver();
         }
     }
 }

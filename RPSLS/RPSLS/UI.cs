@@ -8,10 +8,8 @@ namespace RPSLS
 {
     public static class UI
     {
-        //member variables
         public static List<string> gameVariables = new List<string>() { "Rock", "Paper", "Scissors", "Spock", "Lizard" };
 
-        //member methods
         public static void DisplayPlayerMenu()
         {
             for (int i = 0; i < gameVariables.Count(); i++)
@@ -49,7 +47,7 @@ namespace RPSLS
             Console.WriteLine("Scissors cuts Paper\nPaper covers Rock\nRock crushes Lizard\nLizard poisons Spock\nSpock smashes Scissors\nScissors decapitates Lizard\nLizard eats Paper\nPaper disproves Spock\nSpock vaporizes Rock\nRock blunts Scissors");
         }
 
-        public static void DisplayGameModeOptions()
+        private static void DisplayGameModeOptions()
         {
             Console.Write("\nPress ");
             Console.ForegroundColor = ConsoleColor.Green;
@@ -81,20 +79,7 @@ namespace RPSLS
             return int.Parse(userSelection);
         }
 
-        public static void DisplayPlayerInterface(Player player)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("{0}: Select your variable:", player.name);
-        }
-
-        public static void DisplayPlayerSelection(Player player)
-        {
-            Console.WriteLine("{0} selected {1}", player.name, UI.gameVariables[player.currentSelection]);
-        }
-
-        //(and as it always has) Rock crushes Scissors
-
-        public static string GetDefeatWord(string winnerWord, string loserWord)
+        private static string GetDefeatWord(string winnerWord, string loserWord)
         {
             string defeatWord = "defeats";
             if ((winnerWord == "Scissors") && (loserWord == "Paper"))
@@ -137,7 +122,6 @@ namespace RPSLS
             {
                 defeatWord = "blunts";
             }
-
             return defeatWord;
         }
 
@@ -147,7 +131,7 @@ namespace RPSLS
             Console.WriteLine("");
             if ( isTie )
             {
-                Console.WriteLine("{0} and {1} Tie The Round.",winner.name, loser.name);
+                Console.WriteLine("{0} and {1} Tie The Round.", winner.name, loser.name);
             }
             else
             {
@@ -158,7 +142,7 @@ namespace RPSLS
             Console.ResetColor();
         }
 
-        public static string GetWinsWord(Player player)
+        private static string GetWinsWord(Player player)
         {
             if ( player.numberOfWins == 1 )
             {

@@ -23,5 +23,9 @@ namespace RPSLS
         //member methods
         public abstract void SetVariableSelection();
 
+        public void DisplayVariableSelection()
+        {
+            Console.WriteLine("{0} selected {1}", name, UI.gameVariables[currentSelection]);
+        }
     }
 }
