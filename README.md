@@ -1,11 +1,11 @@
 <h1>Welcome to Rock-Paper-Scissors-Spock-Lizard</h1>
 <p><em>A C# console application that simulates the game "Rock, Paper, Scissors, Spock, Lizard"</em></p>
-<h2>RULES:</h2>
+<h3>RULES:</h3>
 <p>This game is an expansion on the game Rock, Paper, Scissors.</p>
 <p>During each round, each player picks a variable by pressing keys 0-4:<br>
-0 = Rock  |  1 = Paper  |  2 = Scissors  |  3 = Spock  |  4 = Lizard</p>
+0 = Rock&nbsp;&nbsp;|&nbsp;&nbsp;1 = Paper&nbsp;&nbsp;|&nbsp;&nbsp;2 = Scissors&nbsp;&nbsp;|&nbsp;&nbsp;3 = Spock&nbsp;&nbsp;|&nbsp;&nbsp;4 = Lizard</p>
 <p>The winner of each round is the player who defeats the other. In a tie, the process is repeated until a round winner is found. The first player to achieve best of three wins the game.</p>
-<h2>DURING EACH ROUND:</h2>
+<h3>DURING EACH ROUND:</h3>
 <ul>
 <li>Scissors cuts Paper</li>
 <li>Paper covers Rock</li>
