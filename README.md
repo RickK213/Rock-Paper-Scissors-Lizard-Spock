@@ -1,5 +1,5 @@
 # Welcome to Rock-Paper-Scissors-Spock-Lizard
-A C# console application that simulates the game "Rock, Paper, Scissors, Lizard, Spock"
+A C# console application that simulates the game "Rock, Paper, Scissors, Spock, Lizard"
 
 RULES:
 This game is an expansion on the game Rock, Paper, Scissors.
