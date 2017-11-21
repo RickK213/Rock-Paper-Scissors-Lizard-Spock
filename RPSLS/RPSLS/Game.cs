@@ -8,7 +8,6 @@ namespace RPSLS
 {
     public class Game
     {
-
         private bool isGameOver;
         private bool isTwoPlayerMode;
         private Player player1;

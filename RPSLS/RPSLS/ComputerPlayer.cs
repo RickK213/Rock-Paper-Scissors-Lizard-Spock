@@ -8,7 +8,6 @@ namespace RPSLS
 {
     public class ComputerPlayer : Player
     {
-
         public Random randomNumber = new Random();
 
         public ComputerPlayer()
@@ -20,6 +19,5 @@ namespace RPSLS
         {
             currentSelection = randomNumber.Next(5);
         }
-
     }
 }
