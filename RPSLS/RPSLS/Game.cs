@@ -116,18 +116,15 @@ namespace RPSLS
             isGameOver = false;
 
             player1 = new HumanPlayer();
-            player1.numberOfWins = 0;
 
             if ( isTwoPlayerMode )
             {
                 player2 = new HumanPlayer();
                 player2.name = "Player 2";
-                player2.numberOfWins = 0;
             }
             else
             {
                 player2 = new ComputerPlayer();
-                player2.numberOfWins = 0;
             }
         }
 
