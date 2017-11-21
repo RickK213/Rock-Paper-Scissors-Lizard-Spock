@@ -24,15 +24,15 @@ namespace RPSLS
             DisplayPlayerInterface();
             UI.DisplayPlayerMenu();
             string userSelection = Console.ReadKey(true).KeyChar.ToString();
-            int number;
-            if( !int.TryParse(userSelection, out number) || !(int.Parse(userSelection) >= 0) || !(int.Parse(userSelection) <= 4) )
+            int userSelectionNumber;
+            if( !int.TryParse(userSelection, out userSelectionNumber) || !(userSelectionNumber >= 0) || !(userSelectionNumber <= 4) )
             {
                 Console.Clear();
                 SetVariableSelection();
             }
             else
             {
-                currentSelection = int.Parse(userSelection);
+                currentSelection = userSelectionNumber;
             }
         }
 
